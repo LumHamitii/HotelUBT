@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomtypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('home', function () {
     return view('home');
 });
+
+// admin dashboard
+
+Route::get('admin', function () {
+    return view('dashboard');
+});
+
+// RoomType Routes
+
+Route::get('admin/roomtype/{id}/delete', [RoomtypeController::class, 'destroy']);
+Route::resource('admin/roomtype', RoomtypeController::class);
+
