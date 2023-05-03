@@ -8,8 +8,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Add Room type
-        <a href="{{url('admin/roomtype')}}" class="float-right btn btn-success btn-sm"> View all</a>
+        <h6 class="m-0 font-weight-bold text-primary">Add Room 
+        <a href="{{url('admin/rooms')}}" class="float-right btn btn-success btn-sm"> View all</a>
 
         </h6>
     </div>
@@ -22,14 +22,7 @@
             <th>Title</th>
             <td>{{$data->title}}</td>
         </tr>
-        <tr>
-            <th>Price</th>
-            <td>{{$data->price}}</td>
-        </tr>
-        <tr>
-            <th>Detail</th>
-            <td>{{$data->detail}}</td>
-        </tr>
+        
        
     </table>
         </div>

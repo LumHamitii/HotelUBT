@@ -14,32 +14,28 @@
         </h6>
     </div>
     <div class="card-body">
-        @if(Session::has('success'))
-        <p class="text-success">{{session('success')}}</p>
-        @endif
+       
         <div class="table-responsive">
-        <form action="{{url('admin/roomtype')}}" method="post">
-    @csrf
+    
     <table class="table table-bordered">
         <tr>
-            <th>Title</th>
-            <td><input type="text" name="title" class="form-control"></td>
+            <th>Full Name</th>
+            <td>{{$data->full_name}}</td>
         </tr>
         <tr>
-            <th>Price</th>
-            <td><input type="number" name="price" class="form-control"></td>
+            <th>Email</th>
+            <td>{{$data->email}}</td>
         </tr>
         <tr>
-            <th>Detail</th>
-            <td><textarea class="form-control" name="detail"></textarea></td>
+            <th>Mobile</th>
+            <td>{{$data->mobile}}</td>
         </tr>
         <tr>
-            <td colspan="2">
-                <input type="submit" class="btn btn-primary"/>
-            </td>
+            <th>Address</th>
+            <td>{{$data->address}}</td>
         </tr>
+       
     </table>
-</form>
         </div>
     </div>
 </div>
