@@ -10,7 +10,11 @@
     <meta name="author" content="">
 
     <title>Admin page</title>
-
+    @if(!Session::has('adminData'))
+      <script type="text/javascript">
+        window.location.href="{{url('admin/login')}}";
+      </script>
+    @endif
     <!-- Custom fonts for this template-->
     <link href="{{asset('public')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -97,6 +101,12 @@
                         <a class="collapse-item" href="{{url('admin/customer')}}">View all</a>
                     </div>
                 </div>
+            </li>
+             <!-- Log out -->
+             <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/logout')}}">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Log out</span></a>
             </li>
 
         </ul>

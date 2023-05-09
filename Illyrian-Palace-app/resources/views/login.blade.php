@@ -35,21 +35,21 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                           
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Log In</h1>
                                     </div>
-                                    <form class="user" method="post" action="url{{'admin/login'}}">
+                                    <form class="user" method="post" action="{{url('admin/login')}}">
                                       @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="username" aria-describedby="emailHelp"
+                                            <input type="text" name="username" class="form-control form-control-user"
+                                                id="username"  aria-describedby="emailHelp"
                                                 placeholder="User Name">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input name="password" type="password" class="form-control form-control-user"
                                                 id="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -65,7 +65,14 @@
                                         
                                     </form>
                                     
-                                    
+                                    @if($errors->any())
+                                    @foreach($errors ->all() as $error)
+                                    <p class="text-danger">{{$error}}</p>
+                                    @endforeach
+                                    @endif
+                                    @if(Session::has('msg'))
+                                    <p class="text-danger">{{session('msg')}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
