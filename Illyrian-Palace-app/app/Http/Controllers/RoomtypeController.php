@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Roomtype;
 use Illuminate\Http\Request;
+use App\Models\RoomType;
+use App\Models\RoomTypeimage;
+
 
 class RoomtypeController extends Controller
 {
@@ -33,12 +35,24 @@ class RoomtypeController extends Controller
     public function store(Request $request)
     {
         //stores data in databse
+        $request->validate([
+            'title'=>'required',
+            'price'=>'required',
+            'detail'=>'required',
+        ]);
         $data= new Roomtype;
         $data->title=$request->title;
         $data->price=$request->price;
         $data->detail=$request->detail;
         $data->save();
-
+        foreach($request->file('imgs')as $img){
+            $imgPath=$img->store('public/imgs');
+            $imgData= new Roomtypeimage;
+            $imgData->room_type_id=$data->id;
+            $imgData->img_src=$imgPath;
+            $imgData->img_alt=$request->title;
+            $imgData->save();
+        }
         return redirect('admin/roomtype/create')->with('success', 'Data has been added to the database');
     }
 
@@ -71,12 +85,15 @@ class RoomtypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        
         //
         $data= Roomtype::find($id);
         $data->title=$request->title;
         $data->price=$request->price;
         $data->detail=$request->detail;
         $data->save();
+
+        
         return redirect('admin/roomtype/'.$id.'/edit')->with('success', 'Data has been changed');
     }
 
