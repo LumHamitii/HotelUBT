@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Department;
 
 class StaffDepartment extends Controller
 {
@@ -12,7 +13,10 @@ class StaffDepartment extends Controller
      */
     public function index()
     {
-        //
+        //shows all data 
+        $data=Department::all();
+        return view('department.index',['data'=>$data]); 
+
     }
 
     /**
@@ -20,7 +24,9 @@ class StaffDepartment extends Controller
      */
     public function create()
     {
-        //
+        //form for adding data 
+        return view('department.create');
+
     }
 
     /**
@@ -28,7 +34,13 @@ class StaffDepartment extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //stores data in databse
+        $data= new Department;
+        $data->title=$request->title;
+        $data->detail=$request->detail;
+        $data->save();
+
+        return redirect('admin/department/create')->with('success', 'Data has been added to the database');
     }
 
     /**
@@ -36,15 +48,22 @@ class StaffDepartment extends Controller
      */
     public function show(string $id)
     {
-        //
+        //show specific data
+
+        $data=Department::find($id);
+        return view ('department.show', ['data'=>$data]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        //
+        //edit data
+       
+        $data=Department::find($id);
+        return view ('department.edit', ['data'=>$data]);
+
     }
 
     /**
@@ -53,13 +72,19 @@ class StaffDepartment extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $data= Department::find($id);
+        $data->title=$request->title;
+        $data->detail=$request->detail;
+        $data->save();
+        return redirect('admin/department/'.$id.'/edit')->with('success', 'Data has been changed');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+       Department::where('id',$id)->delete();
+       return redirect('admin/department')->with('success','Data has been deleted.');
     }
 }
