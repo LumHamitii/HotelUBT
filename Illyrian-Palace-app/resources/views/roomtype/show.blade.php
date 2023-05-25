@@ -30,6 +30,18 @@
             <th>Detail</th>
             <td>{{$data->detail}}</td>
         </tr>
+        <tr>
+            <td>Images</td>
+            <td>
+                <table class="table table-bordered">
+                <tr>
+                    @foreach($data->roomtypeimgs as $img)
+                    <td><img src="{{asset('storage/app/'.$img->img_src)}}" ></td>
+                    @endforeach
+                </tr>
+            </table>
+        </td>
+        </tr>
        
     </table>
         </div>
