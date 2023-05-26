@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StaffDepartment;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\HomeController; 
 
 /*
@@ -45,3 +46,7 @@ Route::resource('admin/customer', CustomerController::class);
 //Department
 Route::get('admin/department/{id}/delete', [StaffDepartment::class, 'destroy']);
 Route::resource('admin/department', StaffDepartment::class);
+
+//Staff
+Route::get('admin/staff/{id}/delete', [StaffController::class, 'destroy']);
+Route::resource('admin/staff', StaffController::class);
