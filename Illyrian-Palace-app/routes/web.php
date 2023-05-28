@@ -47,6 +47,10 @@ Route::resource('admin/customer', CustomerController::class);
 Route::get('admin/department/{id}/delete', [StaffDepartment::class, 'destroy']);
 Route::resource('admin/department', StaffDepartment::class);
 
+//Staff payment (Rrogat)
+Route::get('admin/staff/payment/{id}/add',[StaffController::class,'add_payment']);
+Route::post('admin/staff/payment/{id}',[StaffController::class,'save_payment']);
+
 //Staff
 Route::get('admin/staff/{id}/delete', [StaffController::class, 'destroy']);
 Route::resource('admin/staff', StaffController::class);
