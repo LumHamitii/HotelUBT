@@ -30,6 +30,14 @@ Route::get('admin', function () {
     return view('dashboard');
 });
 
+// Manager dashboard
+Route::get('manager', function () {
+    return view('dashboardm');
+});
+// Route::get('manager/loginm',  [ManagerController::class, 'login']);
+// Route::post('manager/loginm',  [ManagerController::class, 'check_login']);
+// Route::get('manager/logout',  [ManagerController::class, 'logout']);
+
 // RoomType Routes
 
 Route::get('admin/roomtype/{id}/delete', [RoomtypeController::class, 'destroy']);
@@ -44,16 +52,16 @@ Route::get('admin/customer/{id}/delete', [CustomerController::class, 'destroy'])
 Route::resource('admin/customer', CustomerController::class);
 
 //Department
-Route::get('admin/department/{id}/delete', [StaffDepartment::class, 'destroy']);
-Route::resource('admin/department', StaffDepartment::class);
+Route::get('manager/department/{id}/delete', [StaffDepartment::class, 'destroy']);
+Route::resource('manager/department', StaffDepartment::class);
 
 //Staff payment (Rrogat)
-Route::get('admin/staff/payments/{id}',[StaffController::class,'all_payments']);
-Route::get('admin/staff/payment/{id}/add',[StaffController::class,'add_payment']);
-Route::post('admin/staff/payment/{id}',[StaffController::class,'save_payment']);
-Route::get('admin/staff/payment/{id}/{staff_id}/delete',[StaffController::class,'delete_payment']);
+Route::get('manager/staff/payments/{id}',[StaffController::class,'all_payments']);
+Route::get('manager/staff/payment/{id}/add',[StaffController::class,'add_payment']);
+Route::post('manager/staff/payment/{id}',[StaffController::class,'save_payment']);
+Route::get('manager/staff/payment/{id}/{staff_id}/delete',[StaffController::class,'delete_payment']);
 
 
 //Staff
-Route::get('admin/staff/{id}/delete', [StaffController::class, 'destroy']);
-Route::resource('admin/staff', StaffController::class);
+Route::get('manager/staff/{id}/delete', [StaffController::class, 'destroy']);
+Route::resource('manager/staff', StaffController::class);

@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin page</title>
-    @if(!Session::has('adminData'))
+    <title>Manager page</title>
+    <!-- @if(!Session::has('managerData'))
       <script type="text/javascript">
-        window.location.href="{{url('admin/login')}}";
+        window.location.href="{{url('manager/login')}}";
       </script>
-    @endif
+    @endif -->
     <!-- Custom fonts for this template-->
     <link href="{{asset('public')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -39,7 +39,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Hotel<sup>admin</sup></div>
+                <div class="sidebar-brand-text mx-3">Hotel<sup>Manager</sup></div>
             </a>
 
             <!-- Divider -->
@@ -61,48 +61,41 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+   
+            <!-- Department -->
             <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/roomtype*'))collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>RoomType</span>
-                </a>
-                <div id="collapseTwo" class="collapse @if(request()->is('admin/roomtype*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/roomtype/create')}}">Add new</a>
-                        <a class="collapse-item" href="{{url('admin/roomtype')}}">View all</a>
-                    </div>
-                </div>
-            </li>
-            <!-- RoomMaster -->
-            <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/rooms*'))collapsed @endif" href="#" data-toggle="collapse" data-target="#roomMaster"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-box"></i>
-                    <span>Rooms</span>
-                </a>
-                <div id="roomMaster" class="collapse @if(request()->is('admin/rooms*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/rooms/create')}}">Add new</a>
-                        <a class="collapse-item" href="{{url('admin/rooms')}}">View all</a>
-                    </div>
-                </div>
-            </li>
-            <!-- CustomerMaster -->
-            <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/customer*'))collapsed @endif" href="#" data-toggle="collapse" data-target="#CustomerMaster"
+                <a class="nav-link @if(!request()->is('manager/department*'))collapsed @endif" href="#" data-toggle="collapse" data-target="#DepartmentMaster"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Customer</span>
+                    <span>Departments</span>
                 </a>
-                <div id="CustomerMaster" class="collapse @if(request()->is('admin/customer*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="DepartmentMaster" class="collapse @if(request()->is('manager/department*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/customer/create')}}">Add new</a>
-                        <a class="collapse-item" href="{{url('admin/customer')}}">View all</a>
+                        <a class="collapse-item" href="{{url('manager/department/create')}}">Add new</a>
+                        <a class="collapse-item" href="{{url('manager/department')}}">View all</a>
                     </div>
                 </div>
             </li>
-           
+           <!--Staff-->
+            <li class="nav-item">
+                <a class="nav-link @if(!request()->is('manager/staff*'))collapsed @endif" href="#" data-toggle="collapse" data-target="#StaffMaster"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Staff</span>
+                </a>
+                <div id="StaffMaster" class="collapse @if(request()->is('manager/staff*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('manager/staff/create')}}">Add new</a>
+                        <a class="collapse-item" href="{{url('manager/staff')}}">View all</a>
+                    </div>
+                </div>
+            </li>
+             <!-- Log out -->
+             <li class="nav-item">
+                <a class="nav-link" href="{{url('manager/logout')}}">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Log out</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
@@ -285,7 +278,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Manager</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{asset('public')}}/img/undraw_profile.svg">
                             </a>

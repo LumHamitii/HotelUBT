@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutm')
 @section('content')
                <!-- Begin Page Content -->
                <div class="container-fluid">
@@ -9,7 +9,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Add Department
-        <a href="{{url('admin/department')}}" class="float-right btn btn-success btn-sm"> View all</a>
+        <a href="{{url('manager/department')}}" class="float-right btn btn-success btn-sm"> View all</a>
 
         </h6>
     </div>
@@ -18,7 +18,7 @@
         <p class="text-success">{{session('success')}}</p>
         @endif
         <div class="table-responsive">
-        <form enctype="multipart/form-data" method="post" action="{{url('admin/department/'.$data->id)}}">
+        <form enctype="multipart/form-data" method="post" action="{{url('manager/department/'.$data->id)}}">
         @csrf
         @method('put')
     <table class="table table-bordered">

@@ -1,6 +1,6 @@
 
 
-@extends('layout')
+@extends('layoutm')
 @section('content')
 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -9,7 +9,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">{{$staff->full_name}} Payments
-                                <a href="{{url('admin/staff/payment/'.$staff_id.'/add')}}" class="float-right btn btn-success btn-sm">Add New Payment</a>
+                                <a href="{{url('manager/staff/payment/'.$staff_id.'/add')}}" class="float-right btn btn-success btn-sm">Add New Payment</a>
                             </h6>
                         </div>
                         <div class="card-body">
@@ -42,7 +42,7 @@
                                                 <td>{{$d->amount}}</td>
                                                 <td>{{$d->payment_date}}</td>
                                                 <td>
-                                                    <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('admin/staff/payment/'.$d->id.'/'.$staff_id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                    <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('manager/staff/payment/'.$d->id.'/'.$staff_id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             @endforeach

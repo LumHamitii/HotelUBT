@@ -1,6 +1,6 @@
 
 
-@extends('layout')
+@extends('layoutm')
 @section('content')
 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -9,7 +9,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Add Staff Payment
-                                <a href="{{url('admin/staff')}}" class="float-right btn btn-success btn-sm">View All</a>
+                                <a href="{{url('manager/staff')}}" class="float-right btn btn-success btn-sm">View All</a>
                             </h6>
                         </div>
                         <div class="card-body">
@@ -17,7 +17,7 @@
                             <p class="text-success">{{session('success')}}</p>
                             @endif
                             <div class="table-responsive">
-                                <form method="post" action="{{url('admin/staff/payment/'.$staff_id)}}">
+                                <form method="post" action="{{url('manager/staff/payment/'.$staff_id)}}">
                                     @csrf
                                     <table class="table table-bordered">
                                         <tr>

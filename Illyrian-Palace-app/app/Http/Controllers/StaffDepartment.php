@@ -40,7 +40,7 @@ class StaffDepartment extends Controller
         $data->detail=$request->detail;
         $data->save();
 
-        return redirect('admin/department/create')->with('success', 'Data has been added to the database');
+        return redirect('manager/department/create')->with('success', 'Data has been added to the database');
     }
 
     /**
@@ -76,7 +76,7 @@ class StaffDepartment extends Controller
         $data->title=$request->title;
         $data->detail=$request->detail;
         $data->save();
-        return redirect('admin/department/'.$id.'/edit')->with('success', 'Data has been changed');
+        return redirect('manager/department/'.$id.'/edit')->with('success', 'Data has been changed');
     }
 
     /**
@@ -85,6 +85,6 @@ class StaffDepartment extends Controller
     public function destroy($id)
     {
        Department::where('id',$id)->delete();
-       return redirect('admin/department')->with('success','Data has been deleted.');
+       return redirect('manager/department')->with('success','Data has been deleted.');
     }
 }

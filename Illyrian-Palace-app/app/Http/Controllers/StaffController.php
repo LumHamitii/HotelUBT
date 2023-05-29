@@ -44,7 +44,7 @@ class StaffController extends Controller
         $data->salary=$request->salary;
         $data->save();
 
-        return redirect('admin/staff/create')->with('success', 'Data has been added to the database');
+        return redirect('manager/staff/create')->with('success', 'Data has been added to the database');
     }
 
     /**
@@ -81,7 +81,7 @@ class StaffController extends Controller
         $data->bio=$request->bio;
         $data->salary=$request->salary;
         $data->save();
-        return redirect('admin/staff/'.$id.'/edit')->with('success', 'Data has been changed');
+        return redirect('manager/staff/'.$id.'/edit')->with('success', 'Data has been changed');
     }
 
     /**
@@ -90,7 +90,7 @@ class StaffController extends Controller
     public function destroy($id)
     {
        Staff::where('id',$id)->delete();
-       return redirect('admin/staff')->with('success','Data has been deleted.');
+       return redirect('manager/staff')->with('success','Data has been deleted.');
     }
 
     //All payments
@@ -115,12 +115,12 @@ class StaffController extends Controller
         $data->payment_date=$request->amount_date;
         $data->save();
 
-        return redirect('admin/staff/payment/'.$staff_id.'/add')->with('success','Data has been added.');
+        return redirect('manager/staff/payment/'.$staff_id.'/add')->with('success','Data has been added.');
     }
 
     public function delete_payment($id,$staff_id)
     {
        StaffPayment::where('id',$id)->delete();
-       return redirect('admin/staff/payments/'.$staff_id)->with('success','Data has been deleted.');
+       return redirect('manager/staff/payments/'.$staff_id)->with('success','Data has been deleted.');
     }
 }
