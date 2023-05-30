@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class BookingController extends Controller
 {
@@ -20,7 +21,9 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('booking.create');
+
+        $customers=Customer::all();
+        return view('booking.create', ['data' => $customers]);
     }
 
     /**

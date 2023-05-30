@@ -102,7 +102,18 @@
                     </div>
                 </div>
             </li>
-           
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/booking/create')}}">
+                    <i class="fas fa-hotel"></i>
+                    <span>Booking</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/logout')}}">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Log out</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->

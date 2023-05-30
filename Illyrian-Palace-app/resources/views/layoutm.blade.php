@@ -91,11 +91,7 @@
                 </div>
             </li>
              <!-- Log out -->
-             <li class="nav-item">
-                <a class="nav-link" href="{{url('manager/logout')}}">
-                    <i class="fas fa-fw fa-sign-out-alt"></i>
-                    <span>Log out</span></a>
-            </li>
+           
 
         </ul>
         <!-- End of Sidebar -->
