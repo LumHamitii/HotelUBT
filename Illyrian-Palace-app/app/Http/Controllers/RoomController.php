@@ -43,7 +43,7 @@ class RoomController extends Controller
         $data->title=$request->title;
         $data->save();
 
-        return redirect('admin/room/create')->with('success', 'Data has been added to the database');
+        return redirect('admin/rooms/create')->with('success', 'Data has been added to the database');
     }
 
     /**
