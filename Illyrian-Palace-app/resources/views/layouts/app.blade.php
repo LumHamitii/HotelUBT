@@ -1,29 +1,42 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('public/css/home.css')}}">
-    <title>ILLYRIAN PALACE</title>
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-              <a href=""><img src="{{asset('public/images/logo.png')}}" alt="ILLYRIAN PALACE HOTEL"></a>  
-              
-            </div>
-            <ul class="nav-links">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ROOMS</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <!-- Authentication Links -->
-                @guest
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -54,33 +67,14 @@
                                 </div>
                             </li>
                         @endguest
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="video-container">
-            <video id="background-video" src="{{asset('public/videos/banner.mp4')}}" autoplay muted></video>
-            <div class="video-overlay">
-                <h1>Welcome to Illyrian Palace Hotel</h1>
-                <p>Experience luxury and comfort like never before.</p>
-                <a href="" class="book-btn">Book now</a>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </nav>
 
-        <div class="services">
-          <h1>Our Services</h1>
-        </div>
-    </main>
-
-    <script>
-        const video = document.getElementById('background-video');
-
-        video.addEventListener('ended', function () {
-            video.currentTime = 0;
-            video.play();
-        });
-    </script>
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
 </body>
-
 </html>
-

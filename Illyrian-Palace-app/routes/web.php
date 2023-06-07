@@ -6,8 +6,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StaffDepartment;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\HomeController; 
-use App\Http\Controllers\BookingController; 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +20,21 @@ use App\Http\Controllers\BookingController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'] );
+Route::get('/', [HomeController::class, 'index'] );
 
-// admin dashboard
-Route::get('admin/login',  [AdminController::class, 'login']);
-Route::post('admin/login',  [AdminController::class, 'check_login']);
-Route::get('admin/logout',  [AdminController::class, 'logout']);
+// manager dashboard
 
-Route::get('admin', function () {
-    return view('dashboard');
-});
-
-// Manager dashboard
+Route::group(['middleware'=> ['auth','isManager']],function() {
 Route::get('manager', function () {
     return view('dashboardm');
 });
-// Route::get('manager/loginm',  [ManagerController::class, 'login']);
-// Route::post('manager/loginm',  [ManagerController::class, 'check_login']);
-// Route::get('manager/logout',  [ManagerController::class, 'logout']);
+});
+// admin dashboard
+Route::group(['middleware'=> ['auth','isAdmin']],function() {
+    Route::get('admin', function () {
+        return view('dashboard');
+    });
+    });
 
 // RoomType Routes
 
@@ -71,3 +68,14 @@ Route::resource('manager/staff', StaffController::class);
 Route::get('admin/booking/{id}/delete',[BookingController::class,'destroy']);
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class,'available_rooms']);
 Route::resource('admin/booking',BookingController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
