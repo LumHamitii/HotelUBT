@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: red;
+}
+
+.main {
+    position: relative;
+}
+
+
+.banner{
+background-image: url('../images/h1.jfif');
+background-size: cover;
+height: 300px;
+}
+
+.our-s{
+    color: whitesmoke;
+    font-size:2rem;
+}
+
+.ab-us{
+    color: white;
+    font-size: 6rem;
+}
+
+.banner-content{
+    padding-top: 40px;
+    margin-left: 30px;
+}
+
+.cool {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: rgb(22, 22, 158);
+    height: 500px;
+    padding: 20px;
+}
+.container-cool{
+    display: flex;
+    flex-direction: row;
+}
+
+.para {
+    color: white;
+    max-width: 200px;
+    margin-right: 20px;
+}
+
+.cards {
+    display: flex;
+    float: right;
+}
+
+.card1,
+.card2 {
+    background-color: white;
+    margin-left: 20px;
+    width: 200px;
+}
+
+.card-wrapper {
+    padding: 20px;
+}
+
+.card-img {
+    height: 100px;
+    background-color: lightgray;
+}
+
+.place {
+    margin-top: 10px;
+}
+
+.cool h3 {
+    margin-top: 10px;
+}

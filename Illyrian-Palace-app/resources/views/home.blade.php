@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('public/css/home.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>ILLYRIAN PALACE</title>
 </head>
 
@@ -18,42 +18,12 @@
               
             </div>
             <ul class="nav-links">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ROOMS</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <!-- Authentication Links -->
-                @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+            <li><a href="{{url('/')}}">HOME</a></li>                <li><a href="#">ROOMS</a></li>
+                <li><a href="{{url('page/about-us')}}">ABOUT</a></li>
+                <li><a href="">CONTACT</a></li>
+                <li> <a href="{{url('login.blade.php')}}"><i class="fa-regular fa-user"></i></a></li>
+               
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
             </ul>
         </nav>
     </header>
@@ -61,15 +31,19 @@
         <div class="video-container">
             <video id="background-video" src="{{asset('public/videos/banner.mp4')}}" autoplay muted></video>
             <div class="video-overlay">
-                <h1>Welcome to Illyrian Palace Hotel</h1>
+            <div class="stars">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            </div>
+             <h1>Welcome to Illyrian Palace Hotel</h1>
                 <p>Experience luxury and comfort like never before.</p>
                 <a href="" class="book-btn">Book now</a>
             </div>
         </div>
-
-        <div class="services">
-          <h1>Our Services</h1>
-        </div>
+      
     </main>
 
     <script>
@@ -83,4 +57,3 @@
 </body>
 
 </html>
-

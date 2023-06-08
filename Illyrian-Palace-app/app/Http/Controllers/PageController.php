@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PageController extends Controller
 {
-    //Home
-
-    function home()
-    {
-        return view('home');
+    //About us 
+    function about_us(){
+        return view ('about_us');
     }
 }

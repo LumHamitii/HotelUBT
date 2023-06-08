@@ -10,7 +10,10 @@
     <meta name="author" content="">
 
     <title>Admin page</title>
-
+    @if(!Session::has('adminData'))
+      <script type="text/javascript">
+        window.location.href="{{url('admin/login')}}";
+      </script>
     @endif
     <!-- Custom fonts for this template-->
     <link href="{{asset('public')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -130,7 +133,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-
+                 
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -159,7 +162,7 @@
                             </div>
                         </li>
 
-
+              
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -174,7 +177,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-
+                          
                                 <a class="dropdown-item" href="{{url('admin/logout')}}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout

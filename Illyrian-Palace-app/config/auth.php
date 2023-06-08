@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'manager' => [
+            'driver' => 'session',
+            'provider' => 'managers',
+        ],
     ],
 
     /*
@@ -51,8 +61,8 @@ return [
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
+    | If you have multiple user tables or models, you may configure multiple
+    | sources which represent each model/table. These sources may then
     | be assigned to any extra authentication guards you have defined.
     |
     | Supported: "database", "eloquent"
@@ -65,10 +75,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+        'managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Manager::class,
+        ],
     ],
 
     /*
@@ -113,3 +128,5 @@ return [
     'password_timeout' => 10800,
 
 ];
+
+?>

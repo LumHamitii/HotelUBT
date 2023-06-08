@@ -113,4 +113,13 @@ class CustomerController extends Controller
        Customer::where('id',$id)->delete();
        return redirect('admin/customer')->with('success','Data has been deleted.');
     }
+
+    //Login
+    function login(){
+        return view('login.blade.php');
+    }
+      //Register
+      function register(){
+        return view('register.blade.php');
+    }
 }

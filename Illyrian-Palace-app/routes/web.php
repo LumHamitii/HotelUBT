@@ -6,8 +6,10 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StaffDepartment;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\BookingController; 
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,22 +21,30 @@ use App\Http\Controllers\BookingController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('page/about-us',[PageController::class,'about_us']);
+Route::get('/', [HomeController::class, 'home'] );
 
-Route::get('/', [HomeController::class, 'index'] );
+// admin dashboard
+Route::get('admin/login', [AdminController::class, 'login']);
+Route::post('admin/login', [AdminController::class, 'checkLogin']);
+Route::get('admin/logout', [AdminController::class, 'logout']);
 
-// manager dashboard
+// Add routes for manager login and logout
+Route::get('manager/login', [AdminController::class, 'login']);
+Route::post('manager/login', [AdminController::class, 'checkLogin']);
+Route::get('manager/logout', [AdminController::class, 'logout']);
 
-Route::group(['middleware'=> ['auth','isManager']],function() {
+Route::get('admin', function () {
+    return view('dashboard');
+});
+
+// Manager dashboard
 Route::get('manager', function () {
     return view('dashboardm');
 });
-});
-// admin dashboard
-Route::group(['middleware'=> ['auth','isAdmin']],function() {
-    Route::get('admin', function () {
-        return view('dashboard');
-    });
-    });
+// Route::get('manager/loginm',  [ManagerController::class, 'login']);
+// Route::post('manager/loginm',  [ManagerController::class, 'check_login']);
+// Route::get('manager/logout',  [ManagerController::class, 'logout']);
 
 // RoomType Routes
 
@@ -68,14 +78,3 @@ Route::resource('manager/staff', StaffController::class);
 Route::get('admin/booking/{id}/delete',[BookingController::class,'destroy']);
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class,'available_rooms']);
 Route::resource('admin/booking',BookingController::class);
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

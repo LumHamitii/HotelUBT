@@ -73,7 +73,25 @@ nav {
 .video-overlay p {
     font-size: 1.5rem;
 }
-.book-btn{
-   color: gold;
-font-size: 1.5rem;
+
+.book-btn {
+    color: gold;
+    font-size: 1.5rem;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    display: inline-block;
+    font-size: 40px;
+    color: gold;
+    margin: 0 2px;
+}
+
+.banner1{
+    height: 500px;
 }
